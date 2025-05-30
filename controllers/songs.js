@@ -7,6 +7,8 @@ const getAll = async (req, res) => {
     result.toArray().then((songs) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(songs);
+    }).catch((err) => {
+        res.status(500).json({ message: err.message });
     });
 };
 
@@ -15,8 +17,14 @@ const getSingle = async (req, res) => {
     const songId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('songs').find({ _id: songId });
     result.toArray().then((songs) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(songs[0]);
+        if (!songs.length) {
+            res.status(404).json({ message: 'Song not found.' });
+        } else {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(songs[0]);
+        }
+    }).catch((err) => {
+        res.status(500).json({ message: err.message });
     });
 };
 
@@ -48,6 +56,8 @@ const updateSong = async (req, res) => {
     const response = await mongodb.getDb().db().collection('songs').replaceOne({ _id: songId }, song);
     if (response.modifiedCount > 0) {
         res.status(204).send();
+    } else if (response.matchedCount === 0) {
+        res.status(404).json({ message: 'Song not found.' });
     } else {
         res.status(500).json(response.error || 'Some error occurred while updating the song.');
     }
@@ -59,6 +69,8 @@ const deleteSong = async (req, res) => {
     const response = await mongodb.getDb().db().collection('songs').deleteOne({ _id: songId });
     if (response.deletedCount > 0) {
         res.status(204).send();
+    } else if (response.deletedCount === 0) {
+        res.status(404).json({ message: 'Song not found.' });
     } else {
         res.status(500).json(response.error || 'Some error occurred while deleting the song.');
     }
