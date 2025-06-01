@@ -1,33 +1,17 @@
-const dotenv = require('dotenv');
-dotenv.config();
+const express = require('express');
 
-const MongoClient = require('mongodb').MongoClient;
+const router = express.Router();
 
-let songs;
+const songsController = require('../controllers/songs');
 
-const initDb = (callback) => {
-    if (songs) {
-        console.log('Db is already initialized');
-        return callback(null, songs);
-    }
-    MongoClient.connect(process.env.MONGODB_URL)
-        .then((client) => {
-            songs = client;
-            callback(null, songs);
-        })
-        .catch((err) => {
-            callback(err);
-        });
-};
+router.get('/', songsController.getAll);
 
-const getDatabase = () => {
-    if (!songs) {
-        throw Error('Database not initialized');
-    }
-    return songs;
-};
+router.get('/:id', songsController.getSingle);
 
-module.exports = {
-    initDb,
-    getDatabase
-};
+router.post('/', songsController.createSong);
+
+router.put('/:id', songsController.updateSong);
+
+router.delete('/:id', songsController.deleteSong);
+
+module.exports = router;
