@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Users Api",
-    "descritption": "Users Api",
+    "description": "Users Api",
     "version": "1.0.0",
     "description": ""
   },
