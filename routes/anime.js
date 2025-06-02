@@ -8,10 +8,10 @@ router.get('/', animeController.getAll);
 
 router.get('/:id', animeController.getSingle);
 
-router.post('/', animeController.createSong);
+router.post('/', animeController.createAnime);
 
-router.put('/:id', animeController.updateSong);
+router.put('/:id', animeController.updateAnime);
 
-router.delete('/:id', animeController.deleteSong);
+router.delete('/:id', animeController.deleteAnime);
 
 module.exports = router;
