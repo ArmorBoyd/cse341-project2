@@ -33,7 +33,7 @@ const createSong = async (req, res) => {
     const song = {
         Title: req.body.Title,
         Artist: req.body.Artist,
-        "Year Released": req.body["Year Released"],
+        Year: req.body.Year,
         Album: req.body.Album
     };
     const response = await mongodb.getDb().db().collection('songs').insertOne(song);
@@ -50,7 +50,7 @@ const updateSong = async (req, res) => {
     const song = {
         Title: req.body.Title,
         Artist: req.body.Artist,
-        "Year Released": req.body["Year Released"],
+        Year: req.body.Year,
         Album: req.body.Album
     };
     const response = await mongodb.getDb().db().collection('songs').replaceOne({ _id: songId }, song);
