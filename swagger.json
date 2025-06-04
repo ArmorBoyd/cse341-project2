@@ -5,10 +5,10 @@
     "description": "API for Anime and Songs",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://cse341-project2-u5by.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/anime/": {
