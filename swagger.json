@@ -27,7 +27,7 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "integer" } } }
+            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "String" } } }
           }
         ],
         "responses": {
@@ -55,7 +55,7 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "integer" } } }
+            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
           }
         ],
         "responses": {
@@ -94,7 +94,7 @@
               "properties": {
                 "Title": { "type": "string" },
                 "Artist": { "type": "string" },
-                "Year": { "type": "integer" },
+                "Year": { "type": "string" },
                 "Album": { "type": "string" }
               }
             }
@@ -130,7 +130,7 @@
               "properties": {
                 "Title": { "type": "string" },
                 "Artist": { "type": "string" },
-                "Year": { "type": "integer" },
+                "Year": { "type": "string" },
                 "Album": { "type": "string" }
               }
             }
