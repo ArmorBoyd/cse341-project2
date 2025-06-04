@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Api",
-    "descritption": "Users Api",
+    "title": "Project 2 Api",
+    "descritption": "Project 2 Api",
     "version": "1.0.0",
     "description": ""
   },
