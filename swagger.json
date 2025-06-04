@@ -2,14 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "Users Api",
-    "description": "Users Api",
+    "descritption": "Users Api",
     "version": "1.0.0",
     "description": ""
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -25,7 +24,6 @@
           }
         }
       }
-    }
     },
     "/users/": {
       "get": {
