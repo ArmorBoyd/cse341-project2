@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const cors = require('cors');
 const mongodb = require('./connect');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json'); 
@@ -8,7 +7,7 @@ const swaggerDocument = require('./swagger.json');
 const app = express();
 const port = process.env.PORT || 3000;
 
-//app.use(cors());
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
