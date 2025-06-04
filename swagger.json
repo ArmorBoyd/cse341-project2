@@ -27,7 +27,7 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "String" } } }
+            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
           }
         ],
         "responses": {
