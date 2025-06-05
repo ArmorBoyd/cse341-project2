@@ -27,7 +27,7 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "" }, "Year": { "type": "" } } }
+            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
           }
         ],
         "responses": {
@@ -55,7 +55,7 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "" }, "Year": { "type": "" } } }
+            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
           }
         ],
         "responses": {
@@ -92,10 +92,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "" },
-                "Artist": { "type": "" },
-                "Year": { "type": "" },
-                "Album": { "type": "" }
+                "Title": { "type": "string" },
+                "Artist": { "type": "string" },
+                "Year": { "type": "string" },
+                "Album": { "type": "string" }
               }
             }
           }
@@ -128,10 +128,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "" },
-                "Artist": { "type": "" },
-                "Year": { "type": "" },
-                "Album": { "type": "" }
+                "Title": { "type": "string" },
+                "Artist": { "type": "string" },
+                "Year": { "type": "string" },
+                "Album": { "type": "string" }
               }
             }
           }
