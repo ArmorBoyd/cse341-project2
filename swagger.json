@@ -27,7 +27,13 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
+            "schema": { 
+              "type": "object", 
+              "properties": { 
+                "Title": { "type": "string", "example": "" }, 
+                "Year": { "type": "string", "example": "" } 
+              } 
+            }
           }
         ],
         "responses": {
@@ -55,7 +61,13 @@
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { "type": "object", "properties": { "Title": { "type": "string" }, "Year": { "type": "string" } } }
+            "schema": { 
+              "type": "object", 
+              "properties": { 
+                "Title": { "type": "string", "example": "" }, 
+                "Year": { "type": "string", "example": "" } 
+              } 
+            }
           }
         ],
         "responses": {
@@ -92,10 +104,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string" },
-                "Artist": { "type": "string" },
-                "Year": { "type": "string" },
-                "Album": { "type": "string" }
+                "Title": { "type": "string", "example": "" },
+                "Artist": { "type": "string", "example": "" },
+                "Year": { "type": "string", "example": "" },
+                "Album": { "type": "string", "example": "" }
               }
             }
           }
@@ -128,10 +140,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string" },
-                "Artist": { "type": "string" },
-                "Year": { "type": "string" },
-                "Album": { "type": "string" }
+                "Title": { "type": "string", "example": "" },
+                "Artist": { "type": "string", "example": "" },
+                "Year": { "type": "string", "example": "" },
+                "Album": { "type": "string", "example": "" }
               }
             }
           }
