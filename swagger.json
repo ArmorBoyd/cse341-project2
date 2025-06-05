@@ -11,6 +11,19 @@
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Hello, World"
+        ],
+        "summary": "Hello, Suckers!",
+        "responses": {
+          "200": {
+            "description": "Waddup, World!"
+          }
+        }
+      }
+    },
     "/anime/": {
       "get": {
         "tags": [
