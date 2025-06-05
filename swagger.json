@@ -13,88 +13,141 @@
   "paths": {
     "/anime/": {
       "get": {
-        "tags": [ "Anime" ],
+        "tags": [
+          "Anime"
+        ],
         "summary": "Get all anime",
         "responses": {
-          "200": { "description": "List of all anime" }
+          "200": {
+            "description": "List of all anime"
+          }
         }
       },
       "post": {
-        "tags": [ "Anime" ],
+        "tags": [
+          "Anime"
+        ],
         "summary": "Create new anime",
         "parameters": [
           {
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { 
-              "type": "object", 
-              "properties": { 
-                "Title": { "type": "string", "example": "" }, 
-                "Year": { "type": "string", "example": "" } 
-              } 
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Year": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
             }
           }
         ],
         "responses": {
-          "204": { "description": "Anime created" }
+          "204": {
+            "description": "Anime created"
+          }
         }
       }
     },
     "/anime/{id}": {
       "get": {
-        "tags": [ "Anime" ],
+        "tags": [
+          "Anime"
+        ],
         "summary": "Get a single anime",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
-          "200": { "description": "Anime object" }
+          "200": {
+            "description": "Anime object"
+          }
         }
       },
       "put": {
-        "tags": [ "Anime" ],
+        "tags": [
+          "Anime"
+        ],
         "summary": "Update an anime",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "Anime",
             "in": "body",
             "required": true,
-            "schema": { 
-              "type": "object", 
-              "properties": { 
-                "Title": { "type": "string", "example": "" }, 
-                "Year": { "type": "string", "example": "" } 
-              } 
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Year": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
             }
           }
         ],
         "responses": {
-          "204": { "description": "Anime updated" }
+          "204": {
+            "description": "Anime updated"
+          }
         }
       },
       "delete": {
-        "tags": [ "Anime" ],
+        "tags": [
+          "Anime"
+        ],
         "summary": "Delete an anime",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
-          "204": { "description": "Anime deleted" }
+          "204": {
+            "description": "Anime deleted"
+          }
         }
       }
     },
     "/songs/": {
       "get": {
-        "tags": [ "Songs" ],
+        "tags": [
+          "Songs"
+        ],
         "summary": "Get all songs",
         "responses": {
-          "200": { "description": "List of all songs" }
+          "200": {
+            "description": "List of all songs"
+          }
         }
       },
       "post": {
-        "tags": [ "Songs" ],
+        "tags": [
+          "Songs"
+        ],
         "summary": "Create new song",
         "parameters": [
           {
@@ -104,35 +157,65 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string", "example": "" },
-                "Artist": { "type": "string", "example": "" },
-                "Year": { "type": "string", "example": "" },
-                "Album": { "type": "string", "example": "" }
+                "Title": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Artist": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Year": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Album": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
           }
         ],
         "responses": {
-          "204": { "description": "Song created" }
+          "204": {
+            "description": "Song created"
+          }
         }
       }
     },
     "/songs/{id}": {
       "get": {
-        "tags": [ "Songs" ],
+        "tags": [
+          "Songs"
+        ],
         "summary": "Get a single song",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
-          "200": { "description": "Song object" }
+          "200": {
+            "description": "Song object"
+          }
         }
       },
       "put": {
-        "tags": [ "Songs" ],
+        "tags": [
+          "Songs"
+        ],
         "summary": "Update a song",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "Song",
             "in": "body",
@@ -140,26 +223,49 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string", "example": "" },
-                "Artist": { "type": "string", "example": "" },
-                "Year": { "type": "string", "example": "" },
-                "Album": { "type": "string", "example": "" }
+                "Title": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Artist": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Year": {
+                  "type": "string",
+                  "example": ""
+                },
+                "Album": {
+                  "type": "string",
+                  "example": ""
+                }
               }
             }
           }
         ],
         "responses": {
-          "204": { "description": "Song updated" }
+          "204": {
+            "description": "Song updated"
+          }
         }
       },
       "delete": {
-        "tags": [ "Songs" ],
+        "tags": [
+          "Songs"
+        ],
         "summary": "Delete a song",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
-          "204": { "description": "Song deleted" }
+          "204": {
+            "description": "Song deleted"
+          }
         }
       }
     }
