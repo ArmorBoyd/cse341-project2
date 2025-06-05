@@ -14,158 +14,140 @@
     "/anime/": {
       "get": {
         "tags": [ "Anime" ],
-        "description": "",
-        "produces": [ "application/json" ],
+        "summary": "Get all anime",
         "responses": {
-          "200": { "description": "OK" }
+          "200": { "description": "List of all anime" }
         }
       },
       "post": {
         "tags": [ "Anime" ],
-        "description": "",
+        "summary": "Create new anime",
         "parameters": [
           {
-            "name": "body",
+            "name": "Anime",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Title": { "type": "string", "example": "Naruto" },
-                "Year": { "type": "string", "example": "2002" }
-              }
-            }
+            "required": true,
+            "schema": { "type": "object", "properties": { "Title": { "type": "" }, "Year": { "type": "" } } }
           }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Anime created" }
         }
       }
     },
     "/anime/{id}": {
       "get": {
         "tags": [ "Anime" ],
-        "description": "",
-        "produces": [ "application/json" ],
+        "summary": "Get a single anime",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
-          "200": { "description": "OK" }
+          "200": { "description": "Anime object" }
         }
       },
       "put": {
         "tags": [ "Anime" ],
-        "description": "",
+        "summary": "Update an anime",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
           {
-            "name": "body",
+            "name": "Anime",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Title": { "type": "string", "example": "Naruto" },
-                "Year": { "type": "string", "example": "2002" }
-              }
-            }
+            "required": true,
+            "schema": { "type": "object", "properties": { "Title": { "type": "" }, "Year": { "type": "" } } }
           }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Anime updated" }
         }
       },
       "delete": {
         "tags": [ "Anime" ],
-        "description": "",
+        "summary": "Delete an anime",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Anime deleted" }
         }
       }
     },
     "/songs/": {
       "get": {
         "tags": [ "Songs" ],
-        "description": "",
-        "produces": [ "application/json" ],
+        "summary": "Get all songs",
         "responses": {
-          "200": { "description": "OK" }
+          "200": { "description": "List of all songs" }
         }
       },
       "post": {
         "tags": [ "Songs" ],
-        "description": "",
+        "summary": "Create new song",
         "parameters": [
           {
-            "name": "body",
+            "name": "Song",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string", "example": "Unravel" },
-                "Artist": { "type": "string", "example": "TK from Ling tosite sigure" },
-                "Year": { "type": "string", "example": "2014" },
-                "Album": { "type": "string", "example": "Fantastic Magic" }
+                "Title": { "type": "" },
+                "Artist": { "type": "" },
+                "Year": { "type": "" },
+                "Album": { "type": "" }
               }
             }
           }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Song created" }
         }
       }
     },
     "/songs/{id}": {
       "get": {
         "tags": [ "Songs" ],
-        "description": "",
-        "produces": [ "application/json" ],
+        "summary": "Get a single song",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
-          "200": { "description": "OK" }
+          "200": { "description": "Song object" }
         }
       },
       "put": {
         "tags": [ "Songs" ],
-        "description": "",
+        "summary": "Update a song",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
           {
-            "name": "body",
+            "name": "Song",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "Title": { "type": "string", "example": "Unravel" },
-                "Artist": { "type": "string", "example": "TK from Ling tosite sigure" },
-                "Year": { "type": "string", "example": "2014" },
-                "Album": { "type": "string", "example": "Fantastic Magic" }
+                "Title": { "type": "" },
+                "Artist": { "type": "" },
+                "Year": { "type": "" },
+                "Album": { "type": "" }
               }
             }
           }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Song updated" }
         }
       },
       "delete": {
         "tags": [ "Songs" ],
-        "description": "",
+        "summary": "Delete a song",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" }
         ],
         "responses": {
-          "204": { "description": "No Content" },
-          "500": { "description": "Internal Server Error" }
+          "204": { "description": "Song deleted" }
         }
       }
     }
