@@ -17,7 +17,7 @@ GET https://cse341-project2-u5by.onrender.com/anime
 ###
 
 // The following request will CREATE a new anime/songs in the database
-POST http://localhost:3000/song HTTP/1.1
+POST https://cse341-project2-u5by.onrender.com/songs HTTP/1.1
 content-type: application/json
 
 {
@@ -28,15 +28,14 @@ content-type: application/json
 }
 
 ### // The following request will UPDATE a song/anime in the database
-PUT http://localhost:3000/users/6825f0f2ee3909e63153bce9 HTTP/1.1
+PUT https://cse341-project2-u5by.onrender.com/songs/6842195d08397bcb4d1eeb8a HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Cav",
-    "lastName": "Gaylon",
-    "email": "cav@gmail.com",
-    "favoriteColor": "mink",
-    "birthday": "1999-06-28"
+    "Title": "google google",
+    "Artist": "edge edge edge",
+    "Album": "LWays",
+    "Year": "2069"
 }
 ### // The following request will DELETE a song/anime in the database
 DELETE http://localhost:3000/songs/6840c6a664e4f468325fe849 HTTP/1.1
