@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./connect');
 const swaggerUi = require('swagger-ui-express');
+const passport = require('passport');
+const session = require('express-session');
+const GithubStrategy = require('passport-github2').Strategy;
 const swaggerDocument = require('./swagger.json'); 
 
 const app = express();
