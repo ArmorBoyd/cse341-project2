@@ -4,6 +4,8 @@ const router = express.Router();
 
 const animeController = require('../controllers/anime');
 
+const { isAuthenticated } = require('../middleware/authenticate')
+
 router.get('/', animeController.getAll);
 
 router.get('/:id', animeController.getSingle);
