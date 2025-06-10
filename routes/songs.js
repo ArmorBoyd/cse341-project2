@@ -8,13 +8,13 @@ const { isAuthenticated } = require('../middleware/authenticate')
 
 router.get('/', songsController.getAll);
 
-router.get('/:id', songsController.getSingle);
+router.get('/:id',  songsController.getSingle);
 
-router.post('/', songsController.createSong);
+router.post('/', isAuthenticated, songsController.createSong);
 
-router.put('/:id', songsController.updateSong);
+router.put('/:id', isAuthenticated, songsController.updateSong);
 
-router.delete('/:id', songsController.deleteSong);
+router.delete('/:id', isAuthenticated, songsController.deleteSong);
 
 module.exports = router;
 

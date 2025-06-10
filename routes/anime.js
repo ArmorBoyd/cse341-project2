@@ -10,10 +10,10 @@ router.get('/', animeController.getAll);
 
 router.get('/:id', animeController.getSingle);
 
-router.post('/', animeController.createAnime);
+router.post('/', isAuthenticated, animeController.createAnime);
 
-router.put('/:id', animeController.updateAnime);
+router.put('/:id', isAuthenticated, animeController.updateAnime);
 
-router.delete('/:id', animeController.deleteAnime);
+router.delete('/:id', isAuthenticated, animeController.deleteAnime);
 
 module.exports = router;
