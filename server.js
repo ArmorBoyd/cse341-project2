@@ -39,6 +39,8 @@ app
 .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 .use('/', require('./routes'));
 
+
+
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -59,7 +61,7 @@ passport.deserializeUser((user, done) => {
 app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : 'Logged out')});
 
 app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: '/api-docs'. session: false}),
+    failureRedirect: '/api-docs', session: false}),
     (req, res) => {
         req.session.user = req.user;
         res.redirect('/');
