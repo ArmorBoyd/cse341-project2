@@ -12,9 +12,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-app.use(bodyParser.json());
-
-app.use((req, res, next) => {
+app
+    .use(bodyParser.json())
+    .use(session({
+        secret: 'secret',
+        resave: false,
+        saveUninitialized: true,
+    }))
+    //This is the basic express session({..}) initialization.
+    .use(passport.initialize())
+    //init passport on every route call
+    .use(passport.session())
+    //allow passport to use 'express-session'
+    .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
         'Access-Control-Allow-Headers',
@@ -22,12 +32,12 @@ app.use((req, res, next) => {
     );
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     next();
-});
-
+})
+    .use(cors({methodds: ['GET', 'POST', 'PUT', 'DELETE', 'UPDATE', 'PATCH']}))
+    .use(cors({ origin: '*'}))
 // Swagger docs route
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-app.use('/', require('./routes'));
+.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+.use('/', require('./routes'));
 
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
