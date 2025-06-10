@@ -13,11 +13,4 @@ router.get('/logout', function(req, res, next) {
     });    
 });
 
-
-router.get('/', (req, res) => {
-    //#swagger.tags=['Hello World']
-    res.send('Hello World');
-});
-
-
 module.exports = router;
