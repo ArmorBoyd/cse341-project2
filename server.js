@@ -30,7 +30,7 @@ app
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
     );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 })
     .use(cors({methodds: ['GET', 'POST', 'PUT', 'DELETE', 'UPDATE', 'PATCH']}))
