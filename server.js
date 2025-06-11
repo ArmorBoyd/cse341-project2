@@ -44,7 +44,7 @@ app
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK_URL
+    callbackURL: process.env.CALLBACK_URL
 },
 function (accessToken, refreshToken, profile, done) {
     // Here you would typically save the user to your database
