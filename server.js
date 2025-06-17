@@ -28,12 +28,12 @@ app
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
         'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
+        'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
     );
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 })
-    .use(cors({methodds: ['GET', 'POST', 'PUT', 'DELETE', 'UPDATE', 'PATCH']}))
+    .use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE', 'UPDATE', 'PATCH']}))
     .use(cors({ origin: '*'}))
 // Swagger docs route
 .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -67,7 +67,7 @@ app.get('/github/callback', passport.authenticate('github', {
         res.redirect('/');
     });
 
-mongodb.initDb((err) => {
+mongodb.initDb((err, mongoDB) => {
     if (err) {
         console.error(err);
     } else {

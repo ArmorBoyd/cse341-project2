@@ -3,74 +3,132 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     //#swagger.tags=['Anime']
-    const result = await mongodb.getDb().db().collection('Anime').find();
-    result.toArray().then((animeList) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(animeList);
-    }).catch((err) => {
+    try {
+        const anime = await mongodb
+            .getDb()
+            .db()
+            .collection('Anime')
+            .find();
+
+        anime.toArray().then((list) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(list);
+        }).catch((err) => {
+            res.status(500).json({ message: err });
+        });
+    } catch (err) {
         res.status(500).json({ message: err.message });
-    });
+    }
 };
 
 const getSingle = async (req, res) => {
     //#swagger.tags=['Anime']
-    const animeId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('Anime').find({ _id: animeId });
-    result.toArray().then((animeList) => {
-        if (!animeList.length) {
-            res.status(404).json({ message: 'Anime not found.' });
-        } else {
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(animeList[0]);
+    if (ObjectId.isValid(req.params.id)) {
+        const animeId = new ObjectId(req.params.id);
+        const anime = await mongodb
+            .getDb()
+            .db()
+            .collection('Anime')
+            .find({ _id: animeId });
+
+        try {
+            anime.toArray().then((list) => {
+                res.setHeader('Content-Type', 'application/json');
+                res.status(200).json(list[0]);
+            });
+        } catch (err) {
+            res.status(400).json({ message: err });
         }
-    }).catch((err) => {
-        res.status(500).json({ message: err.message });
-    });
+    } else {
+        res.status(400).json("Invalid ID entered. Please try again.");
+    }
 };
 
 const createAnime = async (req, res) => {
     //#swagger.tags=['Anime']
-    const anime = {
+    // Create body to hold data
+    const newAnime = {
         Title: req.body.Title,
-        Year: req.body.Year,
-        
+        Year: req.body.Year
     };
-    const response = await mongodb.getDb().db().collection('Anime').insertOne(anime);
-    if (response.acknowledged) {
-        res.status(204).send();
-    } else {
-        res.status(500).json(response.error || 'Some error occurred while creating the anime.');
+
+    try {
+        const response = await mongodb
+            .getDb()
+            .db()
+            .collection('Anime')
+            .insertOne(newAnime);
+
+        if (response.acknowledged) {
+            console.log(response.insertedId);
+            res.status(201).json(response);
+        }
+    } catch (error) {
+        res
+            .status(500)
+            .json({ error: error.message || 'An error occurred. Please try again.' });
     }
 };
 
 const updateAnime = async (req, res) => {
     //#swagger.tags=['Anime']
-    const animeId = new ObjectId(req.params.id);
-    const anime = {
-        Title: req.body.Title,
-        Year: req.body.Year,
-        
-    };
-    const response = await mongodb.getDb().db().collection('Anime').replaceOne({ _id: animeId }, anime);
-    if (response.modifiedCount > 0) {
-        res.status(204).send();
-    } else if (response.matchedCount === 0) {
-        res.status(404).json({ message: 'Anime not found.' });
+    if (ObjectId.isValid(req.params.id)) {
+        const animeId = new ObjectId(req.params.id);
+
+        // Create body to hold data
+        const updatedAnime = {
+            Title: req.body.Title,
+            Year: req.body.Year
+        };
+
+        try {
+            const response = await mongodb
+                .getDb()
+                .db()
+                .collection('Anime')
+                .replaceOne({ _id: animeId }, updatedAnime);
+
+            if (response.modifiedCount > 0) {
+                res.status(200).json(response);
+            } else {
+                res.status(500).json(response.error || 'An error occurred. Please try again.');
+            }
+        } catch (error) {
+            res
+                .status(500)
+                .json({ error: error.message || 'An error occurred. Please try again.' });
+        }
     } else {
-        res.status(500).json(response.error || 'Some error occurred while updating the anime.');
+        res.status(400).json('Invalid ID entered. Please try again.');
     }
 };
 
 const deleteAnime = async (req, res) => {
     //#swagger.tags=['Anime']
-    const animeId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('Anime').deleteOne({ _id: animeId });
-    if (response.deletedCount > 0) {
-        res.status(204).send();
-    } else if (response.deletedCount === 0) {
-        res.status(404).json({ message: 'Anime not found.' });
+    if (ObjectId.isValid(req.params.id)) {
+        const animeId = new ObjectId(req.params.id);
+
+        try {
+            const response = await mongodb
+                .getDb()
+                .db()
+                .collection('Anime')
+                .deleteOne({ _id: animeId });
+
+            if (response.deletedCount > 0) {
+                res.status(200).json(response);
+            } else {
+                res
+                    .status(500)
+                    .json(response.error || 'Unable to delete anime. Please try again.');
+            }
+        } catch (error) {
+            res
+                .status(500)
+                .json({ error: error.message || 'Unable to delete anime. Please try again.' });
+        }
     } else {
-        res.status(500).json(response.error || 'Some error occurred while deleting the anime.');
+        res.status(400).json('Invalid ID entered. Please try again.');
     }
 };
 
